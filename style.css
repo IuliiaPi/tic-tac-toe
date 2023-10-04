@@ -1,0 +1,208 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --main-color: rgb(73, 104, 140);
+    --bg-main-color: rgb(208, 237, 251);
+}
+
+html,
+.page {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Georgia';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 100%;
+    letter-spacing: 0.06em;
+
+    color: var(--main-color);
+    background-color: var(--bg-main-color);
+}
+
+.container {
+    padding: 0 1.2rem;
+    margin: 0 auto;
+}
+
+.link {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.link:hover,
+.link:focus,
+.link:active {
+    opacity: .75;
+}
+
+/*  -------------------------  Header styles start -------------------------------  */
+
+.header__container {
+    border-bottom: solid 5px rgb(199, 215, 236);
+}
+
+.header__content {
+    padding: 1.5rem 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.3rem;
+    line-height: 100%;
+}
+
+.title {
+    font-size: 1.9rem;
+    font-style: italic;
+}
+
+/*  -------------------------  Header styles end -------------------------------  */
+
+/*  -------------------------  Main styles start -------------------------------  */
+
+.main {
+    flex: 1 0 auto;
+
+    transition: all 2s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: aliceblue;
+}
+
+.main__container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    /* width: 456px; */
+}
+
+.cell {
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 0 0 1px #1ec2ec;
+    border: 1px solid rgb(2, 70, 115);
+    line-height: 100px;
+    font-size: 150px;
+    text-align: center;
+    color: rgb(24, 109, 162);
+    cursor: pointer;
+}
+
+.btn-restart {
+    padding: 15px;
+    font-size: 1rem;
+    color: #024e61;
+    background-color: rgb(133, 188, 222);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3 ease;
+}
+
+.btn-restart:hover {
+    opacity: 0.8;
+}
+
+.btn-restart:active {
+    opacity: 1;
+}
+
+/*  -------------------------  Main styles end -------------------------------  */
+
+/*  -------------------------  Footer styles start -------------------------------  */
+
+.footer {
+    flex: 0 0 auto;
+}
+
+.footer__container {
+    border-top: solid 5px rgb(199, 215, 236);
+}
+
+.footer__content {
+    padding: 1rem 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 0.8rem;
+}
+
+.rs-school__img {
+    opacity: 0.7;
+}
+
+/*  -------------------------  Footer styles end -------------------------------  */
+
+
+/*  -------------------------  Media styles start -------------------------------  */
+
+@media screen and (max-width: 900px) {}
+
+@media screen and (max-width: 400px) {
+
+    .page {
+        font-size: 0.8rem;
+    }
+
+    .header__content {
+        flex-wrap: wrap;
+        gap: 20px;
+        font-size: 1.2rem;
+    }
+
+    .title {
+        font-size: 1.3rem;
+    }
+
+}
+
+/*  -------------------------  Media styles end -------------------------------  */
