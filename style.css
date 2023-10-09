@@ -118,6 +118,38 @@ html,
     gap: 50px;
 }
 
+.option {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    gap: 40px; 
+}
+
+.option__x,
+.option__o {
+    width: 70px;
+    height: 70px;
+    background-color: #adbfd2;
+    border-radius: 10px;
+    font-size: 2.7rem;
+    text-align: center;
+    color: #024e61;
+    cursor: pointer;
+    transition: all 0.3 ease;
+}
+
+.option__x:hover,
+.option__o:hover {
+    font-size: 3.3rem;
+    color: #03637b;
+}
+
+.option__x:active,
+.option__o:active {
+    background-color: #8ea6c0;
+}
+
 .game-container {
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -129,12 +161,22 @@ html,
     height: 150px;
     box-shadow: 0 0 0 1px #1ec2ec;
     border: 1px solid rgb(2, 70, 115);
-    line-height: 100px;
+    line-height: 130px;
     font-size: 150px;
     text-align: center;
     color: rgb(24, 109, 162);
     cursor: pointer;
+    transition: all 0.3 ease;
 }
+
+.cell._active {
+background-color: rgb(230, 230, 228);
+color: rgb(133, 4, 4);
+}
+
+.cell._active-3 {
+    color: rgb(88, 79, 6);
+    }
 
 .btn-restart {
     padding: 15px;
@@ -147,10 +189,12 @@ html,
 }
 
 .btn-restart:hover {
+    color: #656305;
     opacity: 0.8;
 }
 
 .btn-restart:active {
+    color: #024e61;
     opacity: 1;
 }
 
@@ -182,6 +226,62 @@ html,
 
 /*  -------------------------  Footer styles end -------------------------------  */
 
+.pop-up {
+    /* display: none; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2rem;
+    background-color: #334b65;
+    color: aliceblue;
+
+    transition: all 2s ease;
+}
+
+.pop-up_game-over {
+    opacity: 0.8;
+    transition: all 2s ease;
+
+    /* width: 400px;
+    height: 400px;
+    top: 20%;
+    left: 20%;
+    border-radius: 100%; */
+}
+
+.pop-up_game-start._hidden,
+.pop-up_game-over._hidden {
+    display: none;
+    transition: all 2s ease;
+
+    animation-name: pop-up;
+    animation-duration: 4s;
+    animation-delay: 2s;
+}
+
+.pop-up__contant {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 70px; 
+}
+
+@keyframes pop-up {
+    0% {
+        display: none;
+    }
+    100% {
+       display: block;
+    }
+}
 
 /*  -------------------------  Media styles start -------------------------------  */
 
