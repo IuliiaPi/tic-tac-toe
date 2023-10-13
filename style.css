@@ -85,6 +85,7 @@ html,
 .title {
     font-size: 1.9rem;
     font-style: italic;
+    text-shadow: 1px 1px 1px #ffffff;
 }
 
 /*  -------------------------  Header styles end -------------------------------  */
@@ -123,7 +124,7 @@ html,
     /* flex-direction: column; */
     justify-content: center;
     align-items: center;
-    gap: 40px; 
+    gap: 40px;
 }
 
 .option__x,
@@ -135,6 +136,7 @@ html,
     font-size: 2.7rem;
     text-align: center;
     color: #024e61;
+    text-shadow: 1px 1px 1px #202020;
     cursor: pointer;
     transition: all 0.3 ease;
 }
@@ -170,13 +172,10 @@ html,
 }
 
 .cell._active {
-background-color: rgb(230, 230, 228);
-color: rgb(133, 4, 4);
+    background-color: rgb(255, 255, 0);
+    color: rgb(133, 4, 4);
+    text-shadow: 1px 1px 1px #202020;
 }
-
-.cell._active-3 {
-    color: rgb(88, 79, 6);
-    }
 
 .btn-restart {
     padding: 15px;
@@ -246,7 +245,7 @@ color: rgb(133, 4, 4);
 }
 
 .pop-up_game-over {
-    opacity: 0.8;
+    opacity: 0.9;
     transition: all 2s ease;
 
     /* width: 400px;
@@ -271,16 +270,40 @@ color: rgb(133, 4, 4);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 70px; 
+    gap: 70px;
 }
 
 @keyframes pop-up {
     0% {
         display: none;
     }
+
     100% {
-       display: block;
+        display: block;
     }
+}
+
+.message {
+    text-shadow: 1px 1px 1px #202020;
+}
+
+.table-results {
+    width: 200px;
+
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.table__title {
+    height: 40px;
+    border: 1px solid; 
+}
+
+.table__subtitle {
+    height: 30px;
+    border: 1px solid; 
 }
 
 /*  -------------------------  Media styles start -------------------------------  */
