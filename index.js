@@ -38,8 +38,12 @@ popUpGameOver.classList.add('_hidden');
 const messageResult = document.querySelector('.message-result');
 const clicks = document.querySelector('.click-count');
 
-const subtitlePlayer = document.querySelector('.subtitle-player');
-const subtitleClicks = document.querySelector('.subtitle-clicks');
+const tableResults = document.querySelector('.table-results');
+const rowResult = document.querySelector('.row-result');
+// const subtitlePlayer = document.querySelector('.subtitle-player');
+// const subtitleClicks = document.querySelector('.subtitle-clicks');
+
+
 
 // Counter
 let clickCount = 0;
@@ -47,8 +51,15 @@ let clickCount = 0;
 function Counter() {
     clickCount++;
     clicks.innerHTML = clickCount;
-    subtitleClicks.innerHTML = clickCount;
+    // subtitleClicks.innerHTML = clickCount;
 }
+
+
+// let obj = JSON.parse(localStorage.getItem('name') || {});
+// clickCount++;
+// clicks.innerHTML = clickCount;
+// subtitleClicks.innerHTML = clickCount;
+// localStorage.setItem('name', JSON.stringify(obj));
 
 // resetCounter
 function resetCounter() {
@@ -93,6 +104,10 @@ function cellClick() {
     Counter();
 }
 
+// function changePlayer() {
+//     player === "X" ? (player = "O") : (player = "X");
+// }
+
 // function cellClick(e) {
 //   const cell = e.target;
 //   let currentPlayer;
@@ -109,32 +124,108 @@ function cellClick() {
 //     turn_O = !turn_O;
 // }
 
-btnOptionX.addEventListener('click', () => {
-    popUpGameStart.classList.add('_hidden');
-});
+// btnOptionX.addEventListener('click', () => {
+//     popUpGameStart.classList.add('_hidden');
+// });
 
-btnOptionO.addEventListener('click', () => {
-    popUpGameStart.classList.add('_hidden');
-    // cell_1.innerHTML = x;
-});
+// btnOptionO.addEventListener('click', () => {
+//     popUpGameStart.classList.add('_hidden');
+//     // cell_1.innerHTML = x;
+// });
 
 
 function win_o() {
     popUpGameOver.classList.remove('_hidden');
     messageResult.innerHTML = `Player ${o} has won!`;
-    subtitlePlayer.innerHTML = o;
+    // subtitlePlayer.innerHTML = o;
+
+    function addRow() {
+        const elementsRow = tableResults.querySelectorAll('tr');
+        const newRow = document.createElement('tr');
+        newRow.classList.add('row-result');
+        // newRow.textContent = elementsRow.length + 1;
+        tableResults.append(newRow);
+
+        const subtitlePlayer = document.createElement('td');
+        newRow.append(subtitlePlayer);
+        subtitlePlayer.classList.add('table__subtitle');
+        subtitlePlayer.textContent = o;
+        const subtitleClicks = document.createElement('td');
+        newRow.append(subtitleClicks);
+        subtitleClicks.classList.add('table__subtitle');
+        subtitleClicks.textContent = clickCount + 1;
+
+
+        function setLocalStorage() {
+            localStorage.setItem('clickCount', newRow.innerHTML);
+        }
+        window.addEventListener('beforeunload', setLocalStorage);
+
+        function getLocalStorage() {
+            if (localStorage.getItem('clickCount')) {
+                newRow.innerHTML = localStorage.getItem('clickCount');
+            }
+        }
+        window.addEventListener('load', getLocalStorage);
+
+    }
+    addRow();
+
 }
 
 function win_x() {
     popUpGameOver.classList.remove('_hidden');
     messageResult.innerHTML = `Player ${x} has won!`;
-    subtitlePlayer.innerHTML = x;
+
+    function addRow() {
+        const elementsRow = tableResults.querySelectorAll('tr');
+        const newRow = document.createElement('tr');
+        newRow.classList.add('row-result');
+        // newRow.textContent = elementsRow.length + 1;
+        tableResults.append(newRow);
+
+        const subtitlePlayer = document.createElement('td');
+        newRow.append(subtitlePlayer);
+        subtitlePlayer.classList.add('table__subtitle');
+        subtitlePlayer.textContent = x;
+        const subtitleClicks = document.createElement('td');
+        newRow.append(subtitleClicks);
+        subtitleClicks.classList.add('table__subtitle');
+        subtitleClicks.textContent = clickCount + 1;
+    }
+    addRow();
 }
 
 function draw() {
     popUpGameOver.classList.remove('_hidden');
     messageResult.innerHTML = `Game ended in a draw!`;
-    subtitlePlayer.innerHTML = '';
+    function addRow() {
+        const elementsRow = tableResults.querySelectorAll('tr');
+        const newRow = document.createElement('tr');
+        newRow.classList.add('row-result');
+        // newRow.textContent = elementsRow.length + 1;
+        tableResults.append(newRow);
+
+        const subtitlePlayer = document.createElement('td');
+        newRow.append(subtitlePlayer);
+        subtitlePlayer.classList.add('table__subtitle');
+        subtitlePlayer.textContent = 'draw';
+        const subtitleClicks = document.createElement('td');
+        newRow.append(subtitleClicks);
+        subtitleClicks.classList.add('table__subtitle');
+        subtitleClicks.textContent = clickCount + 1;
+    }
+    addRow();
+
+    // cells.forEach(cell => {
+    //     cell.addEventListener('click', () => {
+    //         cell.innerHTML = ''; 
+    //     });
+    // });
+    // cells.forEach(cell => {
+    //     cell.innerHTML = '';
+    //     // cell.addEventListener('click', cellClick);
+    // });
 }
 
 function cellClick_o() {
@@ -178,7 +269,7 @@ function cellClick_o() {
         cell_4.classList.add('_active');
         cell_6.classList.add('_active');
         win_o();
-    } else if (clickCount === 9) {
+    } else if (clickCount === 8) {
         draw();
     }
 };
@@ -224,18 +315,18 @@ function cellClick_x() {
         cell_4.classList.add('_active');
         cell_6.classList.add('_active');
         win_x();
-    } else if (clickCount === 9) {
-        draw();
+        // } else if (clickCount === 8) {
+        //     draw();
     }
 };
 
-// buttonsRestart
+// buttons Restart
 buttonsRestart.forEach(button => {
     button.addEventListener('click', () => {
         restartGame();
         resetCounter();
         popUpGameOver.classList.add('_hidden');
-        popUpGameStart.classList.remove('_hidden');
+        // popUpGameStart.classList.remove('_hidden');
         currentPlayer = x;
     });
 });
@@ -262,18 +353,3 @@ function restartGame() {
 //     }
 // }
 // window.addEventListener('load', getLocalStorage);
-
-
-
-// function setLocalStorage() {
-//     localStorage.setItem('clickCount', clicks.innerHTML);
-// }
-// window.addEventListener('beforeunload', setLocalStorage);
-
-// function getLocalStorage() {
-//     if (localStorage.getItem('clickCount')) {
-//         clicks.innerHTML = localStorage.getItem('clickCount');
-//     }
-// }
-// window.addEventListener('load', getLocalStorage);
-
