@@ -5,6 +5,7 @@ const o = '0';
 const x = 'x';
 
 let currentPlayer = x;
+let winer;
 // let turn_O;
 
 let cells = document.querySelectorAll('.cell');
@@ -44,14 +45,12 @@ const rowResult = document.querySelector('.row-result');
 // const subtitleClicks = document.querySelector('.subtitle-clicks');
 
 
-
 // Counter
 let clickCount = 0;
 
 function Counter() {
     clickCount++;
     clicks.innerHTML = clickCount;
-    // subtitleClicks.innerHTML = clickCount;
 }
 
 
@@ -137,95 +136,59 @@ function cellClick() {
 function win_o() {
     popUpGameOver.classList.remove('_hidden');
     messageResult.innerHTML = `Player ${o} has won!`;
-    // subtitlePlayer.innerHTML = o;
-
-    function addRow() {
-        const elementsRow = tableResults.querySelectorAll('tr');
-        const newRow = document.createElement('tr');
-        newRow.classList.add('row-result');
-        // newRow.textContent = elementsRow.length + 1;
-        tableResults.append(newRow);
-
-        const subtitlePlayer = document.createElement('td');
-        newRow.append(subtitlePlayer);
-        subtitlePlayer.classList.add('table__subtitle');
-        subtitlePlayer.textContent = o;
-        const subtitleClicks = document.createElement('td');
-        newRow.append(subtitleClicks);
-        subtitleClicks.classList.add('table__subtitle');
-        subtitleClicks.textContent = clickCount + 1;
-
-
-        function setLocalStorage() {
-            localStorage.setItem('clickCount', newRow.innerHTML);
-        }
-        window.addEventListener('beforeunload', setLocalStorage);
-
-        function getLocalStorage() {
-            if (localStorage.getItem('clickCount')) {
-                newRow.innerHTML = localStorage.getItem('clickCount');
-            }
-        }
-        window.addEventListener('load', getLocalStorage);
-
-    }
+    winer = o;
     addRow();
-
 }
 
 function win_x() {
     popUpGameOver.classList.remove('_hidden');
     messageResult.innerHTML = `Player ${x} has won!`;
-
-    function addRow() {
-        const elementsRow = tableResults.querySelectorAll('tr');
-        const newRow = document.createElement('tr');
-        newRow.classList.add('row-result');
-        // newRow.textContent = elementsRow.length + 1;
-        tableResults.append(newRow);
-
-        const subtitlePlayer = document.createElement('td');
-        newRow.append(subtitlePlayer);
-        subtitlePlayer.classList.add('table__subtitle');
-        subtitlePlayer.textContent = x;
-        const subtitleClicks = document.createElement('td');
-        newRow.append(subtitleClicks);
-        subtitleClicks.classList.add('table__subtitle');
-        subtitleClicks.textContent = clickCount + 1;
-    }
+    winer = x;
     addRow();
 }
 
 function draw() {
     popUpGameOver.classList.remove('_hidden');
     messageResult.innerHTML = `Game ended in a draw!`;
-    function addRow() {
-        const elementsRow = tableResults.querySelectorAll('tr');
-        const newRow = document.createElement('tr');
-        newRow.classList.add('row-result');
-        // newRow.textContent = elementsRow.length + 1;
-        tableResults.append(newRow);
-
-        const subtitlePlayer = document.createElement('td');
-        newRow.append(subtitlePlayer);
-        subtitlePlayer.classList.add('table__subtitle');
-        subtitlePlayer.textContent = 'draw';
-        const subtitleClicks = document.createElement('td');
-        newRow.append(subtitleClicks);
-        subtitleClicks.classList.add('table__subtitle');
-        subtitleClicks.textContent = clickCount + 1;
-    }
+    winer = 'draw';
     addRow();
+}
 
-    // cells.forEach(cell => {
-    //     cell.addEventListener('click', () => {
-    //         cell.innerHTML = ''; 
-    //     });
-    // });
-    // cells.forEach(cell => {
-    //     cell.innerHTML = '';
-    //     // cell.addEventListener('click', cellClick);
-    // });
+function addRow() {
+    const elementsRow = tableResults.querySelectorAll('tr');
+    let newRow = document.createElement('tr');
+    newRow.classList.add('row-result');
+    // newRow.textContent = elementsRow.length + 1;
+    // newRow = [];
+    // if (elementsRow.length < 2) {
+    tableResults.append(newRow);
+    // newRow.unshift();
+
+    const subtitlePlayer = document.createElement('td');
+    newRow.append(subtitlePlayer);
+    subtitlePlayer.classList.add('table__subtitle');
+    subtitlePlayer.textContent = winer;
+    const subtitleClicks = document.createElement('td');
+    newRow.append(subtitleClicks);
+    subtitleClicks.classList.add('table__subtitle');
+    subtitleClicks.textContent = clickCount + 1;
+    // } else 
+    // if (elementsRow.length > 2) {
+    //     elementsRow[1].remove;
+    // }
+
+    // function setLocalStorage() {
+    //     localStorage.setItem('clickCount', subtitleClicks.textContent);
+    // }
+    // window.addEventListener('beforeunload', setLocalStorage);
+
+    // function getLocalStorage() {
+    //     if (localStorage.getItem('clickCount')) {
+    //         subtitleClicks.textContent = localStorage.getItem('clickCount');
+    //     }
+    // }
+    // window.addEventListener('load', getLocalStorage);
+
 }
 
 function cellClick_o() {
