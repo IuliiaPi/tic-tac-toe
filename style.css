@@ -298,19 +298,19 @@ html,
 
 .table__title {
     height: 40px;
-    border: 1px solid; 
+    border: 1px solid;
 }
 
 .table__subtitle {
     height: 30px;
-    border: 1px solid; 
+    border: 1px solid;
 }
 
 /*  -------------------------  Media styles start -------------------------------  */
 
 @media screen and (max-width: 900px) {}
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
 
     .page {
         font-size: 0.8rem;
@@ -324,6 +324,17 @@ html,
 
     .title {
         font-size: 1.3rem;
+    }
+
+    .cell {
+        width: 100px;
+        height: 100px;
+        line-height: 85px;
+        font-size: 100px;
+    }
+
+    .pop-up {
+        font-size: 1.8rem;
     }
 
 }

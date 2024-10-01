@@ -71,9 +71,9 @@ const audio = new Audio();
 let isPlay = false;
 
 function playAudio() {
-    audio.src = "./assets/audio/classic-click.wav";
+    audio.src = "./assets/audio/game-ball-tap.wav";
     audio.currentTime = 0;
-    audio.volume = 0.2;
+    audio.volume = 0.8;
     audio.play();
     isPlay = true;
 }
